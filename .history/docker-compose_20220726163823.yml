@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  production:
+    image: postgres:10.2
+    volumes:
+      - ./production_env:/tmp/mnt/env/
+      - ./volumes:/tmp/mnt/
+    environment:
+      POSTGRES_PASSWORD: postgres123
+  replica:
+    image: postgres:10.2
+    volumes:
+      - ./replica_env:/tmp/mnt/
+      - ./volumes:/tmp/mnt/
+    environment:
+      POSTGRES_PASSWORD: postgres123
+  adminer:
+    image: adminer
+    ports:
+      - 8085:8080

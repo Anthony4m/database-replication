@@ -1,0 +1,16 @@
+cluster='failovertest'
+
+node_id=1
+
+node_name=node1
+
+conninfo='host=node1 user=repmgr dbname=repmgr connect_timeout=2'
+
+data_directory='/var/lib/pgsql/12/data/'
+
+failover=automatic
+
+promote_command='/usr/bin/repmgr standby promote -f /var/lib/pgsql/repmgr.conf --log-to-file'
+
+follow_command='/usr/bin/repmgr standby follow -f /var/lib/pgsql/repmgr.conf --log-to-file --upstream-node-id=%n'
+
