@@ -1,4 +1,4 @@
-mode=replica # production, replica
+mode=production # production, replica
 platform=docker # docker, ubuntu
 prod_status=stable #up/down/standby
 rep_status=standby #up/down/standby
@@ -12,16 +12,17 @@ rep_server_backup=standby #yes/no/standby
 production_name=main
 production_var_path=/var/lib/postgresql/10/main
 production_etc_path=/etc/postgresql/10/main
-production_ip=172.20.0.2 #ip a. look for eth or eth0. pick the ip that has a subnet. eg 127.20.0.3/16
-production_port=5433
+production_ip= 172.18.0.2 #ip a. look for eth or eth0. pick the ip that has a subnet. eg 127.20.0.3/16
+production_port=5432
 
 replica_name=main
 replica_var_path=/var/lib/postgresql/10/main
 replica_etc_path=/etc/postgresql/10/main
-replica_ip=172.20.0.3
+replica_ip=172.18.0.4
 replica_port=5433
 
-cd /tmp/mnt
+default_postgres_password="postgres123"
+
 
 if [ $mode = 'production' ]
 then
